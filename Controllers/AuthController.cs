@@ -51,6 +51,7 @@ namespace TonTow.API.Controllers
             userLoginInfo.Role = "A";
             userLoginInfo.EmailId = "TonTowAdmin@gmail.com";
             userLoginInfo.Phone = "";
+            userLoginInfo.Status = true;
             userLoginInfo.RefreshToken = CreateToken(userLoginInfo);
             var refreshToken = GenerateRefreshToken();
             SetRefreshToken(refreshToken);
@@ -112,6 +113,7 @@ namespace TonTow.API.Controllers
                 userLoginInfo.PasswordHash = passwordHash;
                 userLoginInfo.PasswordSalt = passwordSalt;
                 userLoginInfo.Role = "U";
+                userLoginInfo.Status = true;
                 await _tonTowDbContext.TonTowUser.AddAsync(userLoginInfo);
                 await _tonTowDbContext.SaveChangesAsync();
                 return Ok(request);
@@ -127,7 +129,7 @@ namespace TonTow.API.Controllers
                 TonTowUser userLoginInfo = new TonTowUser();
                 LoginResponse loginResponce = new LoginResponse();
                 var UserData = _tonTowDbContext.TonTowUser.SingleOrDefault(
-                  p => p.Username == request.Username
+                  p => p.Username == request.Username && p.Status==true
                   );
 
                 if (UserData==null || UserData.Username != request.Username)
@@ -260,7 +262,7 @@ namespace TonTow.API.Controllers
             try
             {
                 var UserFound = _tonTowDbContext.TonTowUser.SingleOrDefault(
-                  p => p.Username == userName
+                  p => p.Username == userName && p.Status==true
                   );
                 if (UserFound == null)
                 {

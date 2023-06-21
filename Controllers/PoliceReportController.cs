@@ -441,6 +441,7 @@ namespace TonTow.API.Controllers
                         userLoginInfo.PasswordHash = passwordHash;
                         userLoginInfo.PasswordSalt = passwordSalt;
                         userLoginInfo.Role = "U";
+                        userLoginInfo.Status = true;
                         userLoginInfo.RefreshToken = CreateToken(userLoginInfo);
                         var refreshToken = GenerateRefreshToken();
                         SetRefreshToken(refreshToken);
@@ -1136,6 +1137,34 @@ namespace TonTow.API.Controllers
             return Ok(user);
         }
 
+        [HttpGet("GetAdminUsers"), Authorize(Roles = "A")]
+        public async Task<IActionResult> GetAdminUsers()
+        {
+            var user = from TU in _tonTowDbContext.TonTowUser
+                       where TU.Role=="A"
+                       select new
+                       {
+                           TU.UserId,
+                           TU.Username,
+                           TU.Role,
+                           TU.Status
+                       };
+            return Ok(user);
+        }
+        [HttpPost("DeactivateAdminUser"), Authorize(Roles = "A")]
+        public async Task<IActionResult> DeactivateAdminUser(int UserId)
+        {
+            var TonTowUserData = _tonTowDbContext.TonTowUser.SingleOrDefault(
+                p => p.UserId == UserId
+                );
+            if (TonTowUserData != null)
+            {
+                TonTowUserData.Status = false;
+                _tonTowDbContext.TonTowUser.UpdateRange(TonTowUserData);
+                await _tonTowDbContext.SaveChangesAsync();
+            }
+            return Ok(new { Result = "Success" });
+        }
         [HttpPost("registeruser"), Authorize(Roles = "A")]
         public async Task<ActionResult<TonTowUser>> RegisterUser(LoginRequest request)
         {
@@ -1148,6 +1177,7 @@ namespace TonTow.API.Controllers
             userLoginInfo.PasswordHash = passwordHash;
             userLoginInfo.PasswordSalt = passwordSalt;
             userLoginInfo.Role = "A";
+            userLoginInfo.Status =true;
             userLoginInfo.EmailId = mailId;
             userLoginInfo.Phone = phone;
             userLoginInfo.RefreshToken = CreateToken(userLoginInfo);

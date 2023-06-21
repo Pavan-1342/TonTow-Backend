@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "AEHIeaCscAdaKBV7tlPeiN3ULGq51t/QeGi3QKZD8pE=",
+  "Source": "TonTow.API",
+  "BasePath": "_content/TonTow.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

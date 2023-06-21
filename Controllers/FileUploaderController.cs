@@ -235,7 +235,7 @@ namespace TonTow.API.Controllers
         public async Task<IActionResult> ForgetPassword(string userName)
         {
             var UserFound = _tonTowDbContext.TonTowUser.SingleOrDefault(
-                  p => p.Username == userName
+                  p => p.Username == userName && p.Status==true
                   );
             if (UserFound == null)
             {

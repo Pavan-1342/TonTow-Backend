@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Work Space\\TonTowProject\\TonTow API\\TonTow.API.csproj": {}
+    "D:\\TonTow\\TonTow.API.csproj": {}
   },
   "projects": {
-    "D:\\Work Space\\TonTowProject\\TonTow API\\TonTow.API.csproj": {
+    "D:\\TonTow\\TonTow.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Work Space\\TonTowProject\\TonTow API\\TonTow.API.csproj",
+        "projectUniqueName": "D:\\TonTow\\TonTow.API.csproj",
         "projectName": "TonTow.API",
-        "projectPath": "D:\\Work Space\\TonTowProject\\TonTow API\\TonTow.API.csproj",
+        "projectPath": "D:\\TonTow\\TonTow.API.csproj",
         "packagesPath": "C:\\Users\\cgvak\\.nuget\\packages\\",
-        "outputPath": "D:\\Work Space\\TonTowProject\\TonTow API\\obj\\",
+        "outputPath": "D:\\TonTow\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -25,7 +25,6 @@
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -119,7 +118,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -25,6 +25,7 @@ namespace TonTow.API.Models
         public string EmailId { get; set; }
         [StringLength(15)]
         public string? Phone { get; set; }
+        public bool? Status { get; set; }
     }
     public class RefreshToken
     {
